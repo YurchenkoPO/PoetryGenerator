@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Poetry Generator</title>
+
+    <style type = "text/css">
+         .myclass {
+            background-color: #FFFFFF;
+            font-family: "Brush Script MT";
+            font-size:20px !important;
+            color:#000000;
+            margin: 50px;
+            padding: 50px;
+            border: 2px solid #aaa;
+         }
+         body {
+            background-image: url("/templates/wallpaper.jpg");
+            /* Center and scale the image nicely */
+    
+             background-repeat: repeat;
+          
+          background-color: #FFE4B5; /* Цвет фона FFDEAD c7b39b */
+         }
+         
+         h2{
+             font-size:50px !important;
+             font-family: "Brush Script MT";
+             color:#000000;
+        }       
+        p{
+            font-size:20px !important;
+             font-family: "Brush Script MT";
+             color:#000000;
+        }
+        legend{
+            font-size:20px !important;
+             font-family: "Brush Script MT";
+             color:#000000;
+        }
+        optgroup{ 
+            font-size:20px !important;
+        }
+    </style>
+
+</head>
+    <body>
+        <form method="post">
+            <center>
+                <h2> <br />
+                CHOOSE THE NAME OF THE POET <br />
+                    AND ENTER THE BEGINNIG OF THE POEM:</h2>
+                <select name = "name" id = "name"  style="width: 500px; height: 50px">
+                    <optgroup>
+                         <option value="Shakespeare">Shakespeare</option>
+                        <option value="Pushkin">Пушкин</option>
+                    </optgroup>
+                </select>
+
+                <p> Beginning:
+                    <input style="font-family:Brush Script MT; width:400px; height: 40px; font-size:20px" type = "text" name = "beginning" /></p>
+
+                <fieldset style="width:400px"> <legend> Size (in symbols) </legend>
+                <p><input type="range" min="10" max="5000" name="size"
+                          onchange="document.getElementById('rangeValue').innerHTML = this.value;" list="rangeList">
+                          <span id="rangeValue">2500</span></p>
+                <datalist id="rangeList">
+                <option value="10" label="10">
+                <option value="500" label="500">
+                <option value="1000" label="1000">
+                <option value="1500" label="1500">
+                <option value="2000" label="2000">
+                <option value="2500" label="2500">
+                <option value="3000" label="3000">
+                <option value="3500" label="3500">
+                <option value="4000" label="4000">
+                <option value="4500" label="4500">
+                <option value="5000" label="5000">
+                </datalist>
+                </fieldset>
+
+                <p style="font-family:arial;"><input type = "submit" value = "Generate poetry" /></p>
+            </center>
+        </form>
+        <center>
+            {% autoescape false %}
+            <p class = "myclass"> {{ poetry_text }} </p>
+            {% endautoescape %}
+        </center>
+    </body>
+</html>
